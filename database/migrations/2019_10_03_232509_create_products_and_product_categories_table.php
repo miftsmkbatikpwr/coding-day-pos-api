@@ -13,7 +13,7 @@ class CreateProductsAndProductCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name', 100);
             $table->timestamps();
@@ -23,7 +23,7 @@ class CreateProductsAndProductCategoriesTable extends Migration
                 $table->bigIncrements('id');
                 $table->string('name', 200);
                 $table->text('desc')->nullable();
-                $table->bigInteger('category_id');
+                $table->unsignedBigInteger('category_id');
                 $table->foreign('category_id')
                     ->references('id')
                     ->on('categories')
